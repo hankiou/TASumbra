@@ -46,7 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Keyboard.cs" />
     <Compile Include="MainP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

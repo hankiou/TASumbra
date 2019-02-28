@@ -18,6 +18,7 @@ namespace ConsoleApp1
             NOP(3.0);
             i.Keyboard.KeyDown(VirtualKeyCode.LSHIFT);
             i.Keyboard.KeyDown(VirtualKeyCode.VK_Z).Sleep(1000).KeyUp(VirtualKeyCode.VK_Z);
+            i.Keyboard.KeyUp(VirtualKeyCode.LSHIFT);
             return;
             for (int no = 0; no < 13; no++)
             {
