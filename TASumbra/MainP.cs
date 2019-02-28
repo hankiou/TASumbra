@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Xml;
 using System.Diagnostics;
-using System.Threading;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -19,14 +19,11 @@ namespace ConsoleApp1
             i.Keyboard.KeyDown(VirtualKeyCode.LSHIFT);
             i.Keyboard.KeyDown(VirtualKeyCode.VK_Z).Sleep(1000).KeyUp(VirtualKeyCode.VK_Z);
             i.Keyboard.KeyUp(VirtualKeyCode.LSHIFT);
-            return;
             for (int no = 0; no < 13; no++)
             {
                 i.Mouse.MoveMouseBy(30, 0);
                 NOP(16667);
             }
-            Console.ReadLine();
-
         }
         /// <summary>
         /// pause pendant n secondes
