@@ -10,10 +10,10 @@ namespace TASumbra
         [STAThread]
         static void Main(string[] args)
         {
-            InputSimulator i = new InputSimulator();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AppGUI());
+            InputSimulator inputSimulator = new InputSimulator();
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new AppGUI());
             //Application.Exit();
             /*
             NOP(3.0);
@@ -24,6 +24,18 @@ namespace TASumbra
             {
                 i.Mouse.MoveMouseBy(30, 0);
                 NOP(16667);
+            }*/
+
+            Mouse mouse = new Mouse(inputSimulator);
+
+            NOP(800000);
+            mouse.move(45, 2, 150);
+            //mouse.move(225, 2, 100);
+            /*for(int i = 0; i< 360; i++)
+            {
+                mouse.move(i, 2, 100);
+                NOP(16667);
+                mouse.move(-i, 2, 100);
             }*/
         }
 
@@ -46,7 +58,7 @@ namespace TASumbra
         /// pause during n microseconds
         /// </summary>
         /// <param name="microsecs"></param>
-        private static void NOP(int microsecs)
+        public static void NOP(int microsecs)
         {
             double durationSeconds = ((double)microsecs) / 1000000;
             var durationTicks = Math.Round(durationSeconds * Stopwatch.Frequency);
