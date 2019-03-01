@@ -18,10 +18,48 @@ namespace TASumbra
         private void App_Load(object sender, EventArgs e)
         {
             tabControl.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
-            dataGridView1.TopLeftHeaderCell.Value = "Frame n°";
-            dataGridView1.RowHeadersVisible = false;
+            DataGridView1.TopLeftHeaderCell.Value = "Frame n°";
+            //dataGridView1.RowHeadersVisible = false;
+            foreach (DataGridViewColumn column in DataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            DataGridView1.RowsAdded += dataGridView1_RowsAdded;
+            //DataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
+            dataGridView1_RowsAdded(null,null);
         }
-        
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            int lastVal = 0;
+            foreach (DataGridViewRow row in DataGridView1.Rows)
+            {
+                if(row.Cells["FrameNumber"].Value != null)
+                {
+                    lastVal = int.Parse((string)row.Cells["FrameNumber"].Value);
+                }
+                else
+                {
+                    row.Cells["FrameNumber"].Value = ++lastVal;
+                }
+                row.Cells["MouseX"].Value = "0";
+                row.Cells["MouseY"].Value = "0";
+            }
+        }
+
+        private void dataGridView1__CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            bool validClick = (e.RowIndex != -1 && e.ColumnIndex != -1); //Make sure the clicked row/column is valid.
+            var datagridview = sender as DataGridView;
+
+            // Check to make sure the cell clicked is the cell containing the combobox 
+            if (datagridview.Columns[e.ColumnIndex] is DataGridViewComboBoxColumn && validClick)
+            {
+                datagridview.BeginEdit(true);
+                ((ComboBox)datagridview.EditingControl).DroppedDown = true;
+            }
+        }
+
         private void Label1_Click(object sender, EventArgs e)
         {   
             
@@ -51,6 +89,11 @@ namespace TASumbra
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
