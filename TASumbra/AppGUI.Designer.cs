@@ -138,7 +138,7 @@
             this.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DataGridView1.Size = new System.Drawing.Size(544, 427);
             this.DataGridView1.TabIndex = 0;
-            this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // numericUpDown1
             // 
@@ -155,7 +155,7 @@
             this.MovieNumberLabel.Size = new System.Drawing.Size(80, 13);
             this.MovieNumberLabel.TabIndex = 2;
             this.MovieNumberLabel.Text = "Movie number :";
-            this.MovieNumberLabel.Click += new System.EventHandler(this.label2_Click);
+            this.MovieNumberLabel.Click += new System.EventHandler(this.Dabel2_Click);
             // 
             // FrameNumber
             // 

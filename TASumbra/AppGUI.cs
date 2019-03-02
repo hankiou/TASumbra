@@ -24,12 +24,12 @@ namespace TASumbra
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            DataGridView1.RowsAdded += dataGridView1_RowsAdded;
+            DataGridView1.RowsAdded += DataGridView1_RowsAdded;
             //DataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
-            dataGridView1_RowsAdded(null,null);
+            DataGridView1_RowsAdded(null,null);
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void DataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             int lastVal = 0;
             foreach (DataGridViewRow row in DataGridView1.Rows)
@@ -47,7 +47,7 @@ namespace TASumbra
             }
         }
 
-        private void dataGridView1__CellEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1__CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             bool validClick = (e.RowIndex != -1 && e.ColumnIndex != -1); //Make sure the clicked row/column is valid.
             var datagridview = sender as DataGridView;
@@ -78,8 +78,9 @@ namespace TASumbra
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                string PenumbraExePath = fileDialog.FileName;
-                PenumbraPathTextBox.Text = fileDialog.FileName;
+                string penumbraExePath = fileDialog.FileName;
+                PenumbraPathTextBox.Text = penumbraExePath;
+                RunLauncher.penumbraPath = penumbraExePath;
             }
         }
 
@@ -88,12 +89,12 @@ namespace TASumbra
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Dabel2_Click(object sender, EventArgs e)
         {
 
         }

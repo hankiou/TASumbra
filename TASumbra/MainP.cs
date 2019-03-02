@@ -2,6 +2,10 @@
 using System.Diagnostics;
 using WindowsInput;
 using System.Windows.Forms;
+using System;
+using System.Diagnostics;
+using WindowsInput;
+using System.Windows.Forms;
 
 namespace TASumbra
 {
@@ -11,9 +15,10 @@ namespace TASumbra
         static void Main(string[] args)
         {
             InputSimulator inputSimulator = new InputSimulator();
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new AppGUI());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new AppGUI());
+            RunTest(inputSimulator);
             //Application.Exit();
             /*
             NOP(3.0);
@@ -25,11 +30,14 @@ namespace TASumbra
                 i.Mouse.MoveMouseBy(30, 0);
                 NOP(16667);
             }*/
+        }
 
+        private static void RunTest(InputSimulator inputSimulator)
+        {
             Mouse mouse = new Mouse(inputSimulator);
 
             NOP(800000);
-            mouse.move(45, 2, 150);
+            mouse.Move(45, 2, 150);
             //mouse.move(225, 2, 100);
             /*for(int i = 0; i< 360; i++)
             {
@@ -43,7 +51,7 @@ namespace TASumbra
         /// pause during n seconds
         /// </summary>
         /// <param name="durationSeconds"></param>
-        private static void NOP(double durationSeconds)
+        public static void NOP(double durationSeconds)
         {
             var durationTicks = Math.Round(durationSeconds * Stopwatch.Frequency);
             var sw = Stopwatch.StartNew();

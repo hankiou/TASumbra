@@ -9,7 +9,7 @@ namespace TASumbra
 
     class RunLauncher
     {
-        private static string penumbraPath;
+        public static string penumbraPath;
 
     }
 }
