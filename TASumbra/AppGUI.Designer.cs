@@ -34,10 +34,10 @@
             this.Settings = new System.Windows.Forms.TabPage();
             this.PenumbraPathSelect = new System.Windows.Forms.Button();
             this.PenumbraPathTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.DataGridView1 = new System.Windows.Forms.DataGridView();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.MovieEditor = new System.Windows.Forms.TabPage();
             this.MovieNumberLabel = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.FrameNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Forwards = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Backwards = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -45,11 +45,15 @@
             this.Right = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MouseX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MouseY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tests = new System.Windows.Forms.TabPage();
+            this.penumbraTimeText = new System.Windows.Forms.Label();
+            this.LaunchRun = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.Settings.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
+            this.MovieEditor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tests.SuspendLayout();
             this.SuspendLayout();
             // 
             // Label1
@@ -65,7 +69,8 @@
             // tabControl
             // 
             this.tabControl.Controls.Add(this.Settings);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.MovieEditor);
+            this.tabControl.Controls.Add(this.tests);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -104,48 +109,18 @@
             this.PenumbraPathTextBox.Size = new System.Drawing.Size(442, 20);
             this.PenumbraPathTextBox.TabIndex = 1;
             // 
-            // tabPage2
+            // MovieEditor
             // 
-            this.tabPage2.Controls.Add(this.MovieNumberLabel);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
-            this.tabPage2.Controls.Add(this.DataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(936, 476);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Movie Editor";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.DataGridView1.AllowUserToResizeColumns = false;
-            this.DataGridView1.AllowUserToResizeRows = false;
-            this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FrameNumber,
-            this.Forwards,
-            this.Backwards,
-            this.Left,
-            this.Right,
-            this.MouseX,
-            this.MouseY});
-            this.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.DataGridView1.Location = new System.Drawing.Point(0, 49);
-            this.DataGridView1.MultiSelect = false;
-            this.DataGridView1.Name = "dataGridView1";
-            this.DataGridView1.RowHeadersVisible = false;
-            this.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DataGridView1.Size = new System.Drawing.Size(544, 427);
-            this.DataGridView1.TabIndex = 0;
-            this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(483, 23);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown1.TabIndex = 1;
+            this.MovieEditor.Controls.Add(this.MovieNumberLabel);
+            this.MovieEditor.Controls.Add(this.numericUpDown1);
+            this.MovieEditor.Controls.Add(this.dataGridView1);
+            this.MovieEditor.Location = new System.Drawing.Point(4, 22);
+            this.MovieEditor.Name = "MovieEditor";
+            this.MovieEditor.Padding = new System.Windows.Forms.Padding(3);
+            this.MovieEditor.Size = new System.Drawing.Size(936, 476);
+            this.MovieEditor.TabIndex = 1;
+            this.MovieEditor.Text = "Movie Editor";
+            this.MovieEditor.UseVisualStyleBackColor = true;
             // 
             // MovieNumberLabel
             // 
@@ -155,7 +130,36 @@
             this.MovieNumberLabel.Size = new System.Drawing.Size(80, 13);
             this.MovieNumberLabel.TabIndex = 2;
             this.MovieNumberLabel.Text = "Movie number :";
-            this.MovieNumberLabel.Click += new System.EventHandler(this.Dabel2_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(483, 23);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDown1.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FrameNumber,
+            this.Forwards,
+            this.Backwards,
+            this.Left,
+            this.Right,
+            this.MouseX,
+            this.MouseY});
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 49);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(544, 427);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // FrameNumber
             // 
@@ -220,6 +224,38 @@
             this.MouseY.Name = "MouseY";
             this.MouseY.Width = 71;
             // 
+            // tests
+            // 
+            this.tests.Controls.Add(this.penumbraTimeText);
+            this.tests.Controls.Add(this.LaunchRun);
+            this.tests.Location = new System.Drawing.Point(4, 22);
+            this.tests.Name = "tests";
+            this.tests.Padding = new System.Windows.Forms.Padding(3);
+            this.tests.Size = new System.Drawing.Size(936, 476);
+            this.tests.TabIndex = 2;
+            this.tests.Text = "tests";
+            this.tests.UseVisualStyleBackColor = true;
+            // 
+            // penumbraTimeText
+            // 
+            this.penumbraTimeText.AutoSize = true;
+            this.penumbraTimeText.Location = new System.Drawing.Point(123, 35);
+            this.penumbraTimeText.Name = "penumbraTimeText";
+            this.penumbraTimeText.Size = new System.Drawing.Size(25, 13);
+            this.penumbraTimeText.TabIndex = 1;
+            this.penumbraTimeText.Text = "-1.2";
+            this.penumbraTimeText.Click += new System.EventHandler(this.TimeText_Click);
+            // 
+            // LaunchRun
+            // 
+            this.LaunchRun.Location = new System.Drawing.Point(3, 30);
+            this.LaunchRun.Name = "LaunchRun";
+            this.LaunchRun.Size = new System.Drawing.Size(114, 23);
+            this.LaunchRun.TabIndex = 0;
+            this.LaunchRun.Text = "Let\'s WR !";
+            this.LaunchRun.UseVisualStyleBackColor = true;
+            this.LaunchRun.Click += new System.EventHandler(this.GetTime_Click);
+            // 
             // AppGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,10 +269,12 @@
             this.tabControl.ResumeLayout(false);
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
+            this.MovieEditor.ResumeLayout(false);
+            this.MovieEditor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tests.ResumeLayout(false);
+            this.tests.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -246,18 +284,21 @@
         private System.Windows.Forms.Label Label1;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage Settings;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage MovieEditor;
         private System.Windows.Forms.MaskedTextBox PenumbraPathTextBox;
         private System.Windows.Forms.Button PenumbraPathSelect;
-        private System.Windows.Forms.DataGridView DataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label MovieNumberLabel;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FrameNumber;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Forwards;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Backwards;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Left;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Right;
+        private new System.Windows.Forms.DataGridViewCheckBoxColumn Left;
+        private new System.Windows.Forms.DataGridViewCheckBoxColumn Right;
         private System.Windows.Forms.DataGridViewTextBoxColumn MouseX;
         private System.Windows.Forms.DataGridViewTextBoxColumn MouseY;
+        private System.Windows.Forms.TabPage tests;
+        private System.Windows.Forms.Label penumbraTimeText;
+        private System.Windows.Forms.Button LaunchRun;
     }
 }

@@ -18,7 +18,7 @@ namespace TASumbra
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AppGUI());
-            RunTest(inputSimulator);
+            //RunTest(inputSimulator);
             //Application.Exit();
             /*
             NOP(3.0);

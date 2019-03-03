@@ -7,8 +7,7 @@ namespace TASumbra
     
     public partial class AppGUI : Form
     {
-        private FolderBrowserDialog folderBrowserDialog1;
-        
+        bool runStarted = false;
 
         public AppGUI()
         {
@@ -18,13 +17,13 @@ namespace TASumbra
         private void App_Load(object sender, EventArgs e)
         {
             tabControl.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
-            DataGridView1.TopLeftHeaderCell.Value = "Frame n°";
+            dataGridView1.TopLeftHeaderCell.Value = "Frame n°";
             //dataGridView1.RowHeadersVisible = false;
-            foreach (DataGridViewColumn column in DataGridView1.Columns)
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            DataGridView1.RowsAdded += DataGridView1_RowsAdded;
+            dataGridView1.RowsAdded += DataGridView1_RowsAdded;
             //DataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
             DataGridView1_RowsAdded(null,null);
         }
@@ -32,11 +31,11 @@ namespace TASumbra
         private void DataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             int lastVal = 0;
-            foreach (DataGridViewRow row in DataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if(row.Cells["FrameNumber"].Value != null)
                 {
-                    lastVal = int.Parse((string)row.Cells["FrameNumber"].Value);
+                    lastVal = int.Parse(row.Cells["FrameNumber"].Value.ToString());
                 }
                 else
                 {
@@ -78,9 +77,7 @@ namespace TASumbra
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                string penumbraExePath = fileDialog.FileName;
-                PenumbraPathTextBox.Text = penumbraExePath;
-                RunLauncher.penumbraPath = penumbraExePath;
+                PenumbraPathTextBox.Text = fileDialog.FileName;
             }
         }
 
@@ -94,9 +91,21 @@ namespace TASumbra
 
         }
 
-        private void Dabel2_Click(object sender, EventArgs e)
+        private void TimeText_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void GetTime_Click(object sender, EventArgs e)
+        {
+            if (!runStarted)
+            {
+                runStarted = true;
+                RunLauncher runLauncher = new RunLauncher(PenumbraPathTextBox.Text,penumbraTimeText);
+                runLauncher.Start();
+                
+            }
+             //penumbraTimeText.Text = MemoryReader.ReadPenumbraMemory().ToString();
         }
     }
 }
