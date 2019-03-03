@@ -23,7 +23,7 @@ namespace TASumbra
          * amount: int, how many distance units should the crosshair travel (distance unit has't been defned yet)
          * frameCount: int, defines move duration, how many frames will it take to complete
          */
-        public void move(double angle, int amount, int frameCount)
+        public void Move(double angle, int amount, int frameCount)
         {
             double rad = angle * Math.PI / 180;
             double dirX = amount * Math.Cos(rad);

@@ -78,6 +78,7 @@
     <Compile Include="AppGUI.Designer.cs">
       <DependentUpon>AppGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemoryReader.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="RunLauncher.cs" />
     <Compile Include="MovieReader.cs" />
