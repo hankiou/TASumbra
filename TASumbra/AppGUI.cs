@@ -100,12 +100,23 @@ namespace TASumbra
         {
             if (!runStarted)
             {
-                runStarted = true;
-                RunLauncher runLauncher = new RunLauncher(PenumbraPathTextBox.Text,penumbraTimeText);
-                runLauncher.Start();
+                RunLauncher runLauncher = new RunLauncher(PenumbraPathTextBox.Text,penumbraTimeText,framesLabel,fpsLabel,performanceText);
+                if (runLauncher.Start())
+                {
+                    runStarted = true;
+                }
+                else
+                {
+                    MessageBox.Show("Penumbra process not found, make sure the game is launched","FeelsBadMan");
+                }
                 
             }
              //penumbraTimeText.Text = MemoryReader.ReadPenumbraMemory().ToString();
+        }
+
+        private void GameTimeStaticLabel(object sender, EventArgs e)
+        {
+
         }
     }
 }

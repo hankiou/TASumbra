@@ -46,8 +46,16 @@
             this.MouseX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MouseY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tests = new System.Windows.Forms.TabPage();
+            this.GameTime = new System.Windows.Forms.Label();
+            this.LaunchRunLabel = new System.Windows.Forms.Label();
             this.penumbraTimeText = new System.Windows.Forms.Label();
             this.LaunchRun = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.framesLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.fpsLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.performanceText = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.Settings.SuspendLayout();
             this.MovieEditor.SuspendLayout();
@@ -226,6 +234,14 @@
             // 
             // tests
             // 
+            this.tests.Controls.Add(this.performanceText);
+            this.tests.Controls.Add(this.label3);
+            this.tests.Controls.Add(this.fpsLabel);
+            this.tests.Controls.Add(this.label4);
+            this.tests.Controls.Add(this.framesLabel);
+            this.tests.Controls.Add(this.label2);
+            this.tests.Controls.Add(this.GameTime);
+            this.tests.Controls.Add(this.LaunchRunLabel);
             this.tests.Controls.Add(this.penumbraTimeText);
             this.tests.Controls.Add(this.LaunchRun);
             this.tests.Location = new System.Drawing.Point(4, 22);
@@ -236,14 +252,33 @@
             this.tests.Text = "tests";
             this.tests.UseVisualStyleBackColor = true;
             // 
+            // GameTime
+            // 
+            this.GameTime.AutoSize = true;
+            this.GameTime.Location = new System.Drawing.Point(123, 35);
+            this.GameTime.Name = "GameTime";
+            this.GameTime.Size = new System.Drawing.Size(61, 13);
+            this.GameTime.TabIndex = 3;
+            this.GameTime.Text = "GameTime:";
+            // 
+            // LaunchRunLabel
+            // 
+            this.LaunchRunLabel.AutoSize = true;
+            this.LaunchRunLabel.Location = new System.Drawing.Point(9, 60);
+            this.LaunchRunLabel.MinimumSize = new System.Drawing.Size(150, 0);
+            this.LaunchRunLabel.Name = "LaunchRunLabel";
+            this.LaunchRunLabel.Size = new System.Drawing.Size(150, 13);
+            this.LaunchRunLabel.TabIndex = 2;
+            this.LaunchRunLabel.Click += new System.EventHandler(this.GameTimeStaticLabel);
+            // 
             // penumbraTimeText
             // 
             this.penumbraTimeText.AutoSize = true;
-            this.penumbraTimeText.Location = new System.Drawing.Point(123, 35);
+            this.penumbraTimeText.Location = new System.Drawing.Point(190, 35);
             this.penumbraTimeText.Name = "penumbraTimeText";
-            this.penumbraTimeText.Size = new System.Drawing.Size(25, 13);
+            this.penumbraTimeText.Size = new System.Drawing.Size(67, 13);
             this.penumbraTimeText.TabIndex = 1;
-            this.penumbraTimeText.Text = "-1.2";
+            this.penumbraTimeText.Text = "not detected";
             this.penumbraTimeText.Click += new System.EventHandler(this.TimeText_Click);
             // 
             // LaunchRun
@@ -252,9 +287,65 @@
             this.LaunchRun.Name = "LaunchRun";
             this.LaunchRun.Size = new System.Drawing.Size(114, 23);
             this.LaunchRun.TabIndex = 0;
-            this.LaunchRun.Text = "Let\'s WR !";
+            this.LaunchRun.Text = "Launch Run";
             this.LaunchRun.UseVisualStyleBackColor = true;
             this.LaunchRun.Click += new System.EventHandler(this.GetTime_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Frames:";
+            // 
+            // framesLabel
+            // 
+            this.framesLabel.AutoSize = true;
+            this.framesLabel.Location = new System.Drawing.Point(59, 73);
+            this.framesLabel.Name = "framesLabel";
+            this.framesLabel.Size = new System.Drawing.Size(16, 13);
+            this.framesLabel.TabIndex = 5;
+            this.framesLabel.Text = "-1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(27, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Fps:";
+            // 
+            // fpsLabel
+            // 
+            this.fpsLabel.AutoSize = true;
+            this.fpsLabel.Location = new System.Drawing.Point(59, 111);
+            this.fpsLabel.Name = "fpsLabel";
+            this.fpsLabel.Size = new System.Drawing.Size(16, 13);
+            this.fpsLabel.TabIndex = 7;
+            this.fpsLabel.Text = "-1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Performance";
+            // 
+            // performanceText
+            // 
+            this.performanceText.AutoSize = true;
+            this.performanceText.Location = new System.Drawing.Point(82, 137);
+            this.performanceText.MinimumSize = new System.Drawing.Size(50, 0);
+            this.performanceText.Name = "performanceText";
+            this.performanceText.Size = new System.Drawing.Size(50, 13);
+            this.performanceText.TabIndex = 9;
+            this.performanceText.Text = "-11 µs";
+            this.performanceText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // AppGUI
             // 
@@ -300,5 +391,13 @@
         private System.Windows.Forms.TabPage tests;
         private System.Windows.Forms.Label penumbraTimeText;
         private System.Windows.Forms.Button LaunchRun;
+        private System.Windows.Forms.Label LaunchRunLabel;
+        private System.Windows.Forms.Label GameTime;
+        private System.Windows.Forms.Label fpsLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label framesLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label performanceText;
+        private System.Windows.Forms.Label label3;
     }
 }

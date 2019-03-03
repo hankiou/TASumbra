@@ -13,27 +13,37 @@ namespace TASumbra
         private const int clockOffset2 = 0x4C;
         private const int clockOffset3 = 0x1C;
 
+        int penumbraHandle;
+
         [DllImport("kernel32.dll")]
         private static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
         [DllImport("kernel32.dll")]
         private static extern bool ReadProcessMemory(int hProcess, int lpBaseAddress, byte[] lpBuffer, int dwSize, ref int lpNumberOfBytesRead);
 
-        public static float ReadPenumbraMemory()
+        public bool InitPenumbraMemoryReader()
         {
-            //TODO : this is unsafe, add warning to user or error if GetProcessesByName("Penumbra").Length != 1
-            Process process = Process.GetProcessesByName("Penumbra")[0];
-            IntPtr processHandle = OpenProcess(PROCESS_WM_READ, false, process.Id);
+            Process[] processes = Process.GetProcessesByName("Penumbra");
+            if (processes.Length < 1)
+            {
+                return false;
+            }
+            Process process = processes[0];
+            penumbraHandle = (int)OpenProcess(PROCESS_WM_READ, false, process.Id);
+            return true;
+        }
 
+        public float GetGameClock()
+        {
             int bytesRead = 0;
             byte[] buffer = new byte[4];
 
             //get first pointer addr
-            ReadProcessMemory((int)processHandle, 0x6DCAF0, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory(penumbraHandle, 0x6DCAF0, buffer, buffer.Length, ref bytesRead);
             // follow pointer path with offsets (thanks Kotti)
-            ReadProcessMemory((int)processHandle, BitConverter.ToInt32(buffer, 0) +0x188, buffer, buffer.Length, ref bytesRead);
-            ReadProcessMemory((int)processHandle, BitConverter.ToInt32(buffer, 0) + 0x4C, buffer, buffer.Length, ref bytesRead);
-            ReadProcessMemory((int)processHandle, BitConverter.ToInt32(buffer, 0) + 0x1C, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory(penumbraHandle, BitConverter.ToInt32(buffer, 0) +0x188, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory(penumbraHandle, BitConverter.ToInt32(buffer, 0) + 0x4C, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory(penumbraHandle, BitConverter.ToInt32(buffer, 0) + 0x1C, buffer, buffer.Length, ref bytesRead);
             return BitConverter.ToSingle(buffer, 0);
         }
     }
